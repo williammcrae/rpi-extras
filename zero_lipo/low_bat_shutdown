@@ -3,7 +3,7 @@
 # Shut down the Pi if the GPIO goes high indicating low battery
 
 # GPIO Port
-gpio_port="15"
+gpio_port="04"
 
 # Enable GPIO
 if [ ! -d "/sys/class/gpio/gpio$gpio_port" ]; then

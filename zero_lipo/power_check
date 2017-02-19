@@ -1,0 +1,5 @@
+# Zero LiPo
+# Regularly check for a low battery and shutdown if appropriate
+
+# m  h dom mon dow user  command
+  *  *  *   *   *  root  /home/pi/zero_lipo/low_bat_shutdown >> /home/pi/zero_lipo/low_bat_shutdown.log 2&>1
