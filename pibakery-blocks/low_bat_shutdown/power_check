@@ -1,0 +1,5 @@
+# low_bat_shutdown
+# Regularly check for a low battery and shutdown if appropriate
+
+# m  h dom mon dow user  command
+  *  *  *   *   *  root  /usr/local/low_bat_shutdown/low_bat_shutdown >> /var/log/low_bat_shutdown.log 2&>1

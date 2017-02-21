@@ -1,0 +1,44 @@
+{
+	"name": "low_bat_shutdown",
+	"text": "Low Battery Shutdown on \\GPIO %1 high",
+	"script": "low_bat_shutdown_setup.sh",
+	"network": false,
+	"continue": true,
+	"type": "other",
+	"category": "other",
+	"shortDescription":"Shutdown when selected GPIO goes high.",
+	"longDescription":"Shutdown when selected GPIO goes high, the GPIO is checked from cron once a minute.",
+	"args": [
+		{
+			"type": "menu",
+			"options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27"]
+		}
+	]
+}
