@@ -17,7 +17,7 @@ echo "in" > /sys/class/gpio/gpio$gpio_port/direction || { echo -e "Can't set GPI
 echo 0 > /sys/class/gpio/gpio$gpio_port/active_low || { echo -e "Can't set GPIO $gpio_port to active high" 1>&2; exit 1; }
 
 # If its low (low battery light is on), shutdown
-if [ "`cat /sys/class/gpio/gpio$gpio_port/value`" != 1 ]; then
+if [ "`cat /sys/class/gpio/gpio$gpio_port/value`" != 0 ]; then
   echo "Shutting down due to low power `date`"
   /sbin/shutdown -h now || { echo -e "Can't halt the system" 1>&2; exit 1; }
 fi
