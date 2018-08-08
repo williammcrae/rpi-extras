@@ -1,0 +1,5 @@
+# camera_service
+# Post photo to service.
+
+# m  h dom mon dow user  command
+  */MINUTES  *  *   *   *  root  /usr/local/bin/node /usr/local/camera_service/camera-service.js >> /var/log/camera_service.log 2&>1

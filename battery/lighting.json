@@ -1,0 +1,12 @@
+{
+	"name": "battery",
+	"text": "battery",
+	"script": "battery_setup.sh",
+	"network": true,
+	"continue": true,
+	"type": "other",
+	"category": "other",
+	"shortDescription": "Battery",
+	"longDescription": "Battery",
+	"args": []
+}

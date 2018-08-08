@@ -1,0 +1,4 @@
+# sakis3g connect
+
+# m  h dom mon dow user  command
+  */5  *  *   *   *  root  /usr/local/modem3g/sakis3g --sudo "connect" > /dev/null

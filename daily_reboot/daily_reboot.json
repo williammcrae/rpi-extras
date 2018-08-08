@@ -1,0 +1,23 @@
+{
+	"name": "daily_reboot",
+	"text": "Daily Reboot as %1 %2",
+	"script": "daily_reboot_setup.sh",
+	"network": true,
+	"continue": true,
+	"type": "other",
+	"category": "other",
+	"shortDescription":"Reboot daily",
+	"longDescription":"Reboot daily",
+	"args": [
+    {
+			"type": "number",
+			"default": "4",
+			"maxLength":2
+		},
+    {
+			"type": "number",
+			"default": "13",
+			"maxLength":2
+		}
+  ]
+}

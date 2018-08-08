@@ -1,0 +1,24 @@
+{
+	"name": "camera_service",
+	"text": "Camera service: Interavl: %1 minutes, Quality: %2, Divider: %3",
+	"script": "camera_service_setup.sh",
+	"network": false,
+	"continue": true,
+	"type": "other",
+	"category": "other",
+	"shortDescription": "Photo service",
+	"longDescription": "Photo service",
+	"args": [{
+		"type": "text",
+		"default": "15",
+		"maxLength": 36
+	}, {
+		"type": "text",
+		"default": "50",
+		"maxLength": 3
+	}, {
+		"type": "text",
+		"default": "2",
+		"maxLength": 1
+	}]
+}

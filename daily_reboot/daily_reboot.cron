@@ -1,0 +1,4 @@
+# daily reboot
+
+# m  h dom mon dow user  command
+  REBOOT_MINUTE   REBOOT_HOUR  *   *   *  root  reboot

@@ -1,0 +1,20 @@
+{
+	"name": "lighting",
+	"text": "lighting, BUS: %1, ADDRESS: %2",
+	"script": "lighting_setup.sh",
+	"network": true,
+	"continue": true,
+	"type": "other",
+	"category": "other",
+	"shortDescription": "Lighting",
+	"longDescription": "Lighting",
+	"args": [{
+		"type": "text",
+		"default": "/dev/i2c-0",
+		"maxLength": 36
+	}, {
+		"type": "text",
+		"default": "0x23",
+		"maxLength": 64
+	}]
+}

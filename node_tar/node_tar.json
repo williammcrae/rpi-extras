@@ -1,0 +1,12 @@
+{
+	"name": "node_tar",
+	"text": "Install node from tar file",
+	"script": "node_tar.sh",
+	"network": true,
+	"continue": true,
+	"type": "other",
+	"category": "other",
+	"shortDescription":"Install node from tar file",
+	"longDescription":"Install node from tar file",
+	"args": []
+}

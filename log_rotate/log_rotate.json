@@ -1,0 +1,12 @@
+{
+	"name": "log_rotate",
+	"text": "log rotate",
+	"script": "log_rotate_setup.sh",
+	"network": true,
+	"continue": true,
+	"type": "other",
+	"category": "other",
+	"shortDescription":"log rotate",
+	"longDescription":"log rotate",
+	"args": []
+}

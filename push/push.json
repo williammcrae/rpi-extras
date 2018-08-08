@@ -1,0 +1,16 @@
+{
+	"name": "push",
+	"text": "Push, Interval: %1",
+	"script": "push_setup.sh",
+	"network": false,
+	"continue": true,
+	"type": "other",
+	"category": "other",
+	"shortDescription": "Push",
+	"longDescription": "Push",
+	"args": [{
+		"type": "text",
+		"default": "",
+		"maxLength": 36
+	}]
+}

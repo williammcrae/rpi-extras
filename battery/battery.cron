@@ -1,0 +1,4 @@
+# lighting for monitoring sent to service.
+
+# m  h dom mon dow user  command
+  */5  *  *   *   *  root  /usr/local/bin/node /usr/local/battery/battery.js >> /var/log/battery.log 2&>1

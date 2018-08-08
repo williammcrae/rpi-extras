@@ -1,0 +1,36 @@
+{
+	"name": "config",
+	"text": "config, filename: %1, uuid: %2, token: %3, host: %4, protocol: %5, port: %6",
+	"script": "config_setup.sh",
+	"network": false,
+	"continue": true,
+	"type": "other",
+	"category": "other",
+	"shortDescription": "Config",
+	"longDescription": "Config",
+	"args": [{
+		"type": "text",
+		"default": "service.json",
+		"maxLength": 256
+	}, {
+		"type": "text",
+		"default": "UUID",
+		"maxLength": 1024
+	}, {
+		"type": "text",
+		"default": "TOKEN",
+		"maxLength": 1024
+	}, {
+		"type": "text",
+		"default": "service.kizquota.com.au",
+		"maxLength": 256
+	}, {
+		"type": "text",
+		"default": "https",
+		"maxLength": 16
+	}, {
+		"type": "text",
+		"default": "443",
+		"maxLength": 16
+	}]
+}

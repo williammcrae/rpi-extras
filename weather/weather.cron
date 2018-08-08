@@ -1,0 +1,4 @@
+# lighting for monitoring sent to service.
+
+# m  h dom mon dow user  command
+  */5  *  *   *   *  root  /usr/local/bin/node /usr/local/weather/weather.js >> /var/log/weather.log 2&>1

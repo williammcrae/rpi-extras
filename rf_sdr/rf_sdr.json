@@ -1,0 +1,12 @@
+{
+	"name": "rf_sdr",
+	"text": "Install SDR stuff",
+	"script": "rf_sdr.sh",
+	"network": true,
+	"continue": true,
+	"type": "other",
+	"category": "other",
+	"shortDescription":"Install SDR stuff",
+	"longDescription":"Install SDR stuff",
+	"args": []
+}

@@ -1,0 +1,24 @@
+{
+	"name": "weather",
+	"text": "Weather, BUS: %1, ADDRESS: %2, ALTITUDE: %3",
+	"script": "weather_setup.sh",
+	"network": true,
+	"continue": true,
+	"type": "other",
+	"category": "other",
+	"shortDescription": "Weather",
+	"longDescription": "Weather",
+	"args": [{
+		"type": "text",
+		"default": "1",
+		"maxLength": 36
+	}, {
+		"type": "text",
+		"default": "0x76",
+		"maxLength": 64
+	}, {
+		"type": "text",
+		"default": "300",
+		"maxLength": 64
+	}]
+}

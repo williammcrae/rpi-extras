@@ -1,0 +1,12 @@
+{
+	"name": "daily_reboots",
+	"text": "Daily reboots",
+	"script": "daily_reboots_setup.sh",
+	"network": true,
+	"continue": true,
+	"type": "other",
+	"category": "other",
+	"shortDescription":"Daily reboots",
+	"longDescription":"Daily reboots",
+	"args": []
+}

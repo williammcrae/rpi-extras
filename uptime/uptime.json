@@ -1,0 +1,16 @@
+{
+	"name": "uptime",
+	"text": "Uptime, Interval: %1",
+	"script": "uptime_setup.sh",
+	"network": true,
+	"continue": true,
+	"type": "other",
+	"category": "other",
+	"shortDescription": "Uptime monitor",
+	"longDescription": "Uptime monitor",
+	"args": [{
+		"type": "text",
+		"default": "",
+		"maxLength": 64
+	}]
+}

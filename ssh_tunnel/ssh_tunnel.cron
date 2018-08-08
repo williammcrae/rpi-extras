@@ -1,0 +1,4 @@
+# daily reboot
+# m  h dom mon dow user  command
+20  0  *  *  *  root  /usr/local/ssh_tunnel/ssh_tunnel.sh >> /var/log/tunnel.log 2>&1
+20  6  *  *  *  root  /usr/local/ssh_tunnel/ssh_tunnel.sh >> /var/log/tunnel.log 2>&1

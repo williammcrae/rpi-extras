@@ -1,0 +1,20 @@
+{
+	"name": "hotspot",
+	"text": "Hotspot SSID: %1, KEY: %2",
+	"script": "hotspot_setup.sh",
+	"network": true,
+	"continue": true,
+	"type": "other",
+	"category": "other",
+	"shortDescription": "Hotspot",
+	"longDescription": "Hostspot",
+	"args": [{
+		"type": "text",
+		"default": "",
+		"maxLength": 36
+	}, {
+		"type": "text",
+		"default": "",
+		"maxLength": 36
+	}]
+}

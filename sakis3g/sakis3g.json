@@ -1,0 +1,16 @@
+{
+	"name": "sakis3g",
+	"text": "sakis3g setup \\nAPN %1",
+	"script": "sakis3g_setup.sh",
+	"network": false,
+	"continue": true,
+	"type": "other",
+	"category": "other",
+	"shortDescription": "sakis3g setup for easy 3g module setup.",
+	"longDescription": "sakis3g setup for easy 3g module setup.",
+	"args": [{
+		"type": "text",
+		"default": "telstra.internet",
+		"maxLength": 0
+	}]
+}

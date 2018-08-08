@@ -1,0 +1,15 @@
+/var/log/camera_service.log
+/var/log/weather_service.log
+/var/log/weather.log
+/var/log/weather_service.err
+/var/log/uptime.log
+/var/log/lighting.log
+/var/log/battery.log
+/var/log/tunnel.log
+/var/log/tunnel.err
+{
+   compress
+   daily
+   missingok
+   rotate 7
+}

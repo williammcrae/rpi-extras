@@ -1,0 +1,6 @@
+# daily reboot
+# m  h dom mon dow user  command
+11  0  *  *  *  root  /sbin/reboot > /dev/null 2>&1
+11  6  *  *  *  root  /sbin/reboot > /dev/null 2>&1
+11  12  *  *  *  root  /sbin/reboot > /dev/null 2>&1
+11  18  *  *  *  root  /sbin/reboot > /dev/null 2>&1

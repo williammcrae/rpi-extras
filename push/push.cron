@@ -1,0 +1,4 @@
+# uptime for monitoring sent to service.
+
+# m  h dom mon dow user  command
+  */INTERVAL  *  *   *   *  root  /usr/local/bin/node /usr/local/push/push.js >> /var/log/push.log 2&>1
