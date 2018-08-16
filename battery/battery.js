@@ -9,22 +9,26 @@ if (!fs.existsSync(basePath)) {
 }
 
 var ads1115 = new ADS1115(1);
-var battery;
 if (!ads1115.busy) {
-  ads1115.readADCSingleEnded(0, '4096', '250', function(err, data) {
+  ads1115.readADCDifferential(0, 1, '4096', '16', function(err, data) {
+    var battery;
     if (err) {
       console.log("ads1115 err: " + err);
       battery = -1;
+    } else {
+      battery = data / 1000;
     }
-    battery = data / 1000 * 4400000 / 1000000;
+    console.log("data: " + data);
+    console.log("battery: " + battery);
+    var blob = {
+      'battery': battery
+    };
+    fs.writeFileSync(outputPath, JSON.stringify(blob));
   });
 } else {
   console.log("ads1115 is busy");
-  battery = -1;
+  var blob = {
+    'battery': -1
+  };
+  fs.writeFileSync(outputPath, JSON.stringify(blob));
 }
-
-console.log("battery: " + battery);
-var blob = {
-  'battery': battery
-};
-fs.writeFileSync(outputPath, JSON.stringify(blob));

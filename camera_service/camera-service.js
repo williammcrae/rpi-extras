@@ -1,5 +1,34 @@
-var RaspiCam = require("raspicam");
 const fs = require('fs');
+const http = require('http');
+const https = require('https');
+const os = require('os');
+const fs = require('fs');
+
+var RaspiCam = require("raspicam");
+
+const configPath = '/usr/local/config/service.json';
+const watchdogPath = '/tmp/send-to-service';
+
+var serviceHost;
+var servicePort;
+var connect;
+var serviceUUID;
+var serviceToken;
+
+console.log("reading config");
+try {
+  var content = fs.readFileSync(configPath);
+  var jsonContent = JSON.parse(content);
+  serviceHost = jsonContent.host;
+  servicePort = jsonContent.port;
+  connect = jsonContent.protocol == 'https' ? https : http;
+  serviceUUID = jsonContent.uuid;
+  serviceToken = jsonContent.token;
+} catch (e) {
+  console.log("failure reading configuration " + e);
+  process.exit(1);
+}
+
 const minLight = 1;
 
 const basePath = '/tmp/photos'
@@ -50,3 +79,61 @@ if (!lightAvailable || light > minLight) {
 } else {
   console.log("light not available: " + light);
 }
+
+// Push photos
+var photoFiles = fs.readdirSync(basePath);
+
+photoFiles.forEach(function(val, index, array) {
+  if (val.endsWith('.jpg')) {
+    console.log("handle photo: " + val);
+    var filePath = basePath + val;
+    var options = {
+      hostname: serviceHost,
+      port: servicePort,
+      path: '/api/v0/' + serviceUUID + '/file/camera',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'image/jpeg',
+        'service-token': serviceToken
+      }
+    };
+    var taken = val.substring(0, val.length - 4);
+    if (taken.length) {
+      options.headers['service-taken'] = taken;
+    }
+
+    var imageStream = fs.createReadStream(filePath, {
+      encoding: null,
+      autoClose: true
+    });
+
+    var req = connect.request(options, (res) => {
+      console.log(`STATUS: ${res.statusCode}`);
+      console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
+      res.setEncoding('utf8');
+      res.on('data', (chunk) => {
+        console.log(`BODY: ${chunk}`);
+      });
+      res.on('end', () => {
+        console.log('No more data in response.')
+      })
+    });
+
+    req.on('error', (e) => {
+      console.log("error on photo: " + val);
+      console.log(`problem with request: ${e.message}`);
+    });
+
+    imageStream.on('end', function() {
+      console.log("sent photo: " + val);
+      console.log('end of stream');
+      req.end();
+    });
+
+    imageStream.pipe(req);
+
+    // Remove the file.
+    fs.unlinkSync(filePath);
+    console.log("removed photo: " + val);
+  }
+});

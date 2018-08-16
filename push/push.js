@@ -1,8 +1,10 @@
 const http = require('http');
 const https = require('https');
 const os = require('os');
+const fs = require('fs');
 
 const configPath = '/usr/local/config/service.json';
+const watchdogPath = '/tmp/send-to-service';
 
 var serviceHost;
 var servicePort;
@@ -13,10 +15,10 @@ var serviceToken;
 console.log("reading config");
 try {
   var content = fs.readFileSync(configPath);
-  var jsonContent = JSON.parse(contents);
+  var jsonContent = JSON.parse(content);
   serviceHost = jsonContent.host;
   servicePort = jsonContent.port;
-  connect = jsonContent.protocol;
+  connect = jsonContent.protocol == 'https' ? https : http;
   serviceUUID = jsonContent.uuid;
   serviceToken = jsonContent.token;
 } catch (e) {
@@ -26,7 +28,7 @@ try {
 
 // Push photos
 var photoFiles = fs.readdirSync('/tmp/photos');
-photoFiles.forEach(function(filePath, index, array) {
+photoFiles.forEach(function(val, index, array) {
   if (val.endsWith('.jpg')) {
     console.log("handle photo: " + val);
     var filePath = "/tmp/photos/" + val;
@@ -80,17 +82,17 @@ photoFiles.forEach(function(filePath, index, array) {
 // Push data
 var dataFiles = fs.readdirSync('/tmp/data');
 var data = false;
-dataFiles.forEach(function(filePath, index, array) {
+dataFiles.forEach(function(val, index, array) {
   if (val.endsWith('.json')) {
     console.log("handle data: " + val);
     var filePath = "/tmp/data/" + val;
 
     try {
       var content = fs.readFileSync(filePath);
-      var jsonContent = JSON.parse(contents);
+      var jsonContent = JSON.parse(content);
 
       for (var property in jsonContent) {
-        if (object.hasOwnProperty(property)) {
+        if (jsonContent.hasOwnProperty(property)) {
           if (data === false) {
             data = {}
           }
@@ -98,7 +100,7 @@ dataFiles.forEach(function(filePath, index, array) {
         }
       }
     } catch (e) {
-      console.log("failure reading data: " + filePath + " -" + e);
+      console.log("failure reading data: " + filePath + " - " + e);
     }
 
     // Remove the file.
