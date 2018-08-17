@@ -10,7 +10,7 @@
 	"longDescription": "Lighting",
 	"args": [{
 		"type": "text",
-		"default": "/dev/i2c-0",
+		"default": "1",
 		"maxLength": 36
 	}, {
 		"type": "text",

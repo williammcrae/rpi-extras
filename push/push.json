@@ -10,7 +10,7 @@
 	"longDescription": "Push",
 	"args": [{
 		"type": "text",
-		"default": "",
+		"default": "5",
 		"maxLength": 36
 	}]
 }

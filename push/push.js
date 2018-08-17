@@ -26,59 +26,6 @@ try {
   process.exit(1);
 }
 
-// Push photos
-var photoFiles = fs.readdirSync('/tmp/photos');
-photoFiles.forEach(function(val, index, array) {
-  if (val.endsWith('.jpg')) {
-    console.log("handle photo: " + val);
-    var filePath = "/tmp/photos/" + val;
-    var options = {
-      hostname: serviceHost,
-      port: servicePort,
-      path: '/api/v0/' + serviceUUID + '/file/camera',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'image/jpeg',
-        'service-token': serviceToken
-      }
-    };
-
-    var imageStream = fs.createReadStream(filePath, {
-      encoding: null,
-      autoClose: true
-    });
-
-    var req = connect.request(options, (res) => {
-      console.log(`STATUS: ${res.statusCode}`);
-      console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
-      res.setEncoding('utf8');
-      res.on('data', (chunk) => {
-        console.log(`BODY: ${chunk}`);
-      });
-      res.on('end', () => {
-        console.log('No more data in response.')
-      })
-    });
-
-    req.on('error', (e) => {
-      console.log("error on photo: " + val);
-      console.log(`problem with request: ${e.message}`);
-    });
-
-    imageStream.on('end', function() {
-      console.log("sent photo: " + val);
-      console.log('end of stream');
-      req.end();
-    });
-
-    imageStream.pipe(req);
-
-    // Remove the file.
-    fs.unlinkSync(filePath);
-    console.log("removed photo: " + val);
-  }
-});
-
 // Push data
 var dataFiles = fs.readdirSync('/tmp/data');
 var data = false;

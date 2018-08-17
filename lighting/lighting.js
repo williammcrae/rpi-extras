@@ -10,7 +10,7 @@ if (!fs.existsSync(basePath)) {
 
 var bh1750 = new BH1750({
   address: BH1750_ADDRESS, // 0x23,
-  device: 'BH1750_BUS', // '/dev/i2c-0',
+  device: '/dev/i2c-BH1750_BUS', // '/dev/i2c-0',
   command: 0x11,
   length: 2
 });

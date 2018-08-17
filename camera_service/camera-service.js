@@ -1,4 +1,3 @@
-const fs = require('fs');
 const http = require('http');
 const https = require('https');
 const os = require('os');
@@ -42,7 +41,7 @@ var lightAvailable = false;
 console.log("reading the light level");
 try {
   var content = fs.readFileSync(lightPath);
-  var jsonContent = JSON.parse(contents);
+  var jsonContent = JSON.parse(content);
   if (jsonContent.hasOwnProperty('light')) {
     light = jsonContent.light;
     lightAvailable = true;
@@ -86,7 +85,7 @@ var photoFiles = fs.readdirSync(basePath);
 photoFiles.forEach(function(val, index, array) {
   if (val.endsWith('.jpg')) {
     console.log("handle photo: " + val);
-    var filePath = basePath + val;
+    var filePath = basePath + '/' + val;
     var options = {
       hostname: serviceHost,
       port: servicePort,
