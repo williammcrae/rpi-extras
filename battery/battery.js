@@ -16,7 +16,7 @@ if (!ads1115.busy) {
       console.log("ads1115 err: " + err);
       battery = -1;
     } else {
-      battery = data / 1000;
+      battery = data / 100;
     }
     console.log("data: " + data);
     console.log("battery: " + battery);
